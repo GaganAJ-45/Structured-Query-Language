@@ -6,6 +6,7 @@
 ###*example* Object (Human)
 
 | Property | Rowfact |
+|--------|---------|
 | Name | A J |
 | STD | 10th |
 | gender | Men |
