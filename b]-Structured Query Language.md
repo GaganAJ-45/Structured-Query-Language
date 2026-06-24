@@ -27,13 +27,33 @@
 4. Truncate
 5. rename
 
-*Examples*
+*Examples :*
 ```sql
 Create Database Agriculture;
 
 Create Table Farming(
-Ph_Name serial Primary key,
+Id serial Primary key,
+Name varchar(20) Not null,
 Number Int unique,
 Email varchar(20) Not null);
 ```
 
+#### 2.Data Manipulation Language(DML)
+- User to manipulate data in cables.
+**Commands**
+1. Insert
+2. Update
+3. Delete
+
+*Examples :*
+```sql
+Insert Into Farming
+Values(1,'Jayappa A G',6362,aj@gmail.com);
+
+Update Farming
+Set Number = 9901
+where Id = 1;
+
+Delete From Farming
+where Id = 1;
+```
