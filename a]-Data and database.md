@@ -43,4 +43,32 @@
 ### **Rules of EF Codd**
 There are mainly seven rules in the EF codd, but only four are used in the relational model.Which includes all of them.
 
-1 **RULE** - The data entered in the cell must be a one specific value.
+1. **RULE** - The data entered in the cell must be a one specific value.
+2. **RULE** - According to EF Codd, data stored in a table can be linked using keywords, creating a relation between tables.
+3. **RULE** - In an RDBMS, data is stored in tables that contain metadata. which is data within the data,and is auto‑generated, available for each cell, and can be retrieved with a query.
+4. **RULE** - Data can be validated in two ways:
+ -. Assigning a data type to the column
+ -. Assigning constraints
+   
+## **Types of DataBase**
+Databases can be categorized by data model and architecture. 
+- Broadly we have relational database management systems organize data in a structured way and use SQL queries for data operations. MySQL, PostgreSQL, and Oracle SQL are all servers for relational database management systems.Then we have NoSQL DBMS, which handle unstructured data, such as:
+- Redis
+- MongoDB (document store)
+- Cassandra (column‑family store)
+- Neo4j (graph database)
+-Object‑oriented database management systems store data as objects.
+
+#### **Oracle Database.**
+- Oracle Database includes its own design and security, and its graphical user interface and you can create secure code.
+- Unlike other databases, it works perfectly within its own database.
+- Oracle can store a large amount of data. We can scale data without any probability.
+- It offers powerful coding and features compared to other databases.
+- If we face any isssue any cloud problems, we can contact the developers through the website, as they know best.
+- It runs on multiple operating systems.
+- It’s the first rank on all other servers in the database.
+
+**cons**
+- You need to know how to work with the database
+- which is not free for commercial or personal use.
+- Companies that use Oracle Database include Intel, IBM, Azure, Netflix, JP Morgan, and PayPal.
