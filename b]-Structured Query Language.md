@@ -30,6 +30,8 @@
 *Examples :*
 ```sql
 Create Database Agriculture;
+(In MySql we have to use the database)
+USE Agriculture;
 
 Create Table Farming(
 Id serial Primary key,
