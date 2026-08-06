@@ -405,6 +405,8 @@ INSERT INTO pet (id, name, owner_id) VALUES (2, 'Ghost', 99);
 
 ---
 
+
+
 ## 11. Quick Recap Table
 
 | Concept | Key Point |
