@@ -20,6 +20,8 @@ It is used to:
 
 Examples of RDBMS software that use SQL: **MySQL, Oracle, PostgreSQL, SQL Server**.
 
+
+
 ---
 
 ## Database
