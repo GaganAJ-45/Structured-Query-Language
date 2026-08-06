@@ -19,6 +19,10 @@ It is used to:
 > SQL syntax is *similar* across different database systems (MySQL, PostgreSQL, Oracle, SQL Server), but each has its own small variations — often called "dialects."
 
 Examples of RDBMS software that use SQL: **MySQL, Oracle, PostgreSQL, SQL Server**.
+
+
+
+
 ---
 
 ## Database
