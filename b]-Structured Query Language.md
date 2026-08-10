@@ -20,20 +20,7 @@ It is used to:
 
 Examples of RDBMS software that use SQL: **MySQL, Oracle, PostgreSQL, SQL Server**.
 
-
-
-
 ---
-
-## Database
-Database is a medium or place that can store the data in the systematic or organized manner
-- it can support the CURD OPERATIONS
-  - C- create/insert
-  - U- update/modify
-  - R- read/retrive
-  - D-delete/drop
-so many companies use the Database to store the data
-
 ## 2. Core Concepts: Data, Object, Properties
 
 | Term | Meaning |
