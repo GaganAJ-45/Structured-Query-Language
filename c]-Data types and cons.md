@@ -47,19 +47,6 @@ age TINYINT   -- fine, age never exceeds 255
 id  BIGINT    -- good for tables expecting billions of rows
 ```
 
-#### 1.1.2 How "size" is defined across other data types
-
-The number inside the brackets doesn't always mean the same thing — it depends on the data type:
-
-| Type | What the number means |
-|---|---|
-| `INT` / `TINYINT` / `BIGINT` etc. | Fixed **byte size → value range** (see table above) — no number is written by you |
-| `VARCHAR(n)` | `n` = max **characters** allowed (e.g. `VARCHAR(50)` → up to 50 characters) |
-| `CHAR(n)` | `n` = **exact** number of characters reserved, always (padded if shorter) |
-| `NUMERIC(P, S)` | `P` = total digits allowed, `S` = digits after the decimal (e.g. `NUMERIC(5,2)` → max value `999.99`) |
-| `TEXT` | No length specified by default — MySQL also has `MEDIUMTEXT` / `LONGTEXT` for bigger caps |
-| `BLOB` | Same idea — MySQL also has `MEDIUMBLOB` / `LONGBLOB` for bigger binary files |
-
 ### 1.2 Date/Time Data Types
 
 | Data Type | Description |
@@ -142,6 +129,19 @@ CREATE TABLE profile (
 
 > **Rule of thumb:** use `VARCHAR`/`TEXT` for readable text, and `BLOB`/`BINARY` for raw file-like data.
 
+---
+#### 1.1.2 How "size" is defined across other data types
+
+The number inside the brackets doesn't always mean the same thing — it depends on the data type:
+
+| Type | What the number means |
+|---|---|
+| `INT` / `TINYINT` / `BIGINT` etc. | Fixed **byte size → value range** (see table above) — no number is written by you |
+| `VARCHAR(n)` | `n` = max **characters** allowed (e.g. `VARCHAR(50)` → up to 50 characters) |
+| `CHAR(n)` | `n` = **exact** number of characters reserved, always (padded if shorter) |
+| `NUMERIC(P, S)` | `P` = total digits allowed, `S` = digits after the decimal (e.g. `NUMERIC(5,2)` → max value `999.99`) |
+| `TEXT` | No length specified by default — MySQL also has `MEDIUMTEXT` / `LONGTEXT` for bigger caps |
+| `BLOB` | Same idea — MySQL also has `MEDIUMBLOB` / `LONGBLOB` for bigger binary files |
 ---
 
 ## 2. Constraints
