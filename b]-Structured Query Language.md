@@ -48,6 +48,7 @@ Examples of RDBMS software that use SQL: **MySQL, Oracle, PostgreSQL, SQL Server
 
 SQL is divided into categories based on what kind of operation they perform:
 
+
 | Category | Full Form | Purpose |
 |---|---|---|
 | **DDL** | Data Definition Language | Defines/modifies structure of DB objects (tables) |
