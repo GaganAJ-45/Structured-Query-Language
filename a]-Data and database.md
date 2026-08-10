@@ -51,6 +51,9 @@ DBMS
 - A relational model is a theoretical concept of EFC.
 
 ### **Rules of EF Codd**
+> Rules that define what a **true relational database** must follow.
+
+**What is the Codd Rule?** — Rules enforced in an RDBMS so that data entered in a table is *validated* before it goes into a DB table.
 There are mainly seven rules in the EF codd, but only four are used in the relational model.Which includes all of them.
 
 1. **RULE** - The data entered in the cell must be a one specific value.
