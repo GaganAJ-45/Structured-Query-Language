@@ -41,29 +41,6 @@ Examples of RDBMS software that use SQL: **MySQL, Oracle, PostgreSQL, SQL Server
 
 ---
 
-## 3. DBMS vs RDBMS
-
-### 3.1 DBMS (Database Management System)
-- This is software used to maintain and Manage Database Activity
-- Software used to **create, store, manage, and retrieve** data in a database.
-- Provides **security** and **authentication** — access is controlled by authenticating users, so it maintains data security.
-- Stores data as files (no forced tabular structure).
-
-### 3.2 RDBMS (Relational DBMS)
-- A DBMS that follows the **Relational Model**.
-- Data is stored **in tables** (rows & columns).
-- Follows **Codd's Rules** (see Section 4).
-- RDBMS software examples: **MySQL, PostgreSQL, Oracle, SQL Server**.
-
-```
-DBMS
- ├── Files
- ├── Security
- └── Query Language (varying language)
-        └── RDBMS ⊂ DBMS
-              └── Uses SQL (a common query language) with rules
-```
-
 > **Relational Model**: Logically represents data as tables. RDBMS software follows this model.
 
 ---
