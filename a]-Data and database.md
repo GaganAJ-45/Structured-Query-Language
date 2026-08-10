@@ -35,6 +35,16 @@
 - this is an updated version of a database management system.
 - A database that follows the relational model is called a Relational Database Management System.
 
+
+---
+DBMS
+ ├─ Files
+ ├── Security
+ └── Query Language (varying language)
+        └── RDBMS ⊂ DBMS
+              └── Uses SQL (a common query language) with rules
+---
+
 ## **Relational Model.**
 - A relational model is formed by the EF codd, also called edger-Frank codd.
 - A database that follows the relational model is called a Relational Database Management System.
