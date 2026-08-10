@@ -28,6 +28,38 @@ CREATE TABLE product (
 );
 ```
 
+#### 1.1.1 Integer types — storage size & range
+
+Every integer type has a **fixed storage size** (in bytes), and that size decides the **range of values** it can hold. Bigger type = bigger range = more storage used.
+
+| Type | Storage | Range (signed) | Range (unsigned) |
+|---|---|---|---|
+| `TINYINT` | 1 byte | -128 to 127 | 0 to 255 |
+| `SMALLINT` | 2 bytes | -32,768 to 32,767 | 0 to 65,535 |
+| `MEDIUMINT` | 3 bytes | ~-8.3M to 8.3M | 0 to ~16.7M |
+| `INT` | 4 bytes | ~-2.1 billion to 2.1 billion | 0 to ~4.2 billion |
+| `BIGINT` | 8 bytes | ~-9.2 quintillion to 9.2 quintillion | 0 to ~1.8 × 10¹⁹ |
+
+> Plain `INT` can hold roughly **10 digits** of value (±2,147,483,647). Use a smaller type like `TINYINT` for columns that will only ever hold small numbers (e.g. `age`), and `BIGINT` for tables expecting very large row counts (e.g. billions of transactions).
+
+```sql
+age TINYINT   -- fine, age never exceeds 255
+id  BIGINT    -- good for tables expecting billions of rows
+```
+
+#### 1.1.2 How "size" is defined across other data types
+
+The number inside the brackets doesn't always mean the same thing — it depends on the data type:
+
+| Type | What the number means |
+|---|---|
+| `INT` / `TINYINT` / `BIGINT` etc. | Fixed **byte size → value range** (see table above) — no number is written by you |
+| `VARCHAR(n)` | `n` = max **characters** allowed (e.g. `VARCHAR(50)` → up to 50 characters) |
+| `CHAR(n)` | `n` = **exact** number of characters reserved, always (padded if shorter) |
+| `NUMERIC(P, S)` | `P` = total digits allowed, `S` = digits after the decimal (e.g. `NUMERIC(5,2)` → max value `999.99`) |
+| `TEXT` | No length specified by default — MySQL also has `MEDIUMTEXT` / `LONGTEXT` for bigger caps |
+| `BLOB` | Same idea — MySQL also has `MEDIUMBLOB` / `LONGBLOB` for bigger binary files |
+
 ### 1.2 Date/Time Data Types
 
 | Data Type | Description |
@@ -256,6 +288,7 @@ INSERT INTO pet (id, name, owner_id) VALUES (2, 'Ghost', 99);
 | Concept | Key Point |
 |---|---|
 | `INT` / `NUMERIC` / `SERIAL` | Whole numbers, decimals, auto-increment IDs |
+| Integer sizes | `TINYINT` (1B) → `SMALLINT` (2B) → `MEDIUMINT` (3B) → `INT` (4B) → `BIGINT` (8B) — bigger size = bigger range |
 | `DATE` / `TIME` / `TIMESTAMP` | Date only, time only, date + time |
 | `CHAR` / `VARCHAR` / `TEXT` | Fixed length, variable up-to-limit, unlimited long text |
 | `BOOLEAN` | TRUE / FALSE flag |
