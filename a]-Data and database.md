@@ -37,12 +37,14 @@
 
 
 ---
+```
 DBMS
  ├─ Files
  ├── Security
  └── Query Language (varying language)
         └── RDBMS ⊂ DBMS
               └── Uses SQL (a common query language) with rules
+```
 ---
 
 ## **Relational Model.**
