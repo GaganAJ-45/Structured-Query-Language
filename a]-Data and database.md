@@ -64,7 +64,7 @@ Databases can be categorized by data model and architecture.
 - Unlike other databases, it works perfectly within its own database.
 - Oracle can store a large amount of data. We can scale data without any probability.
 - It offers powerful coding and features compared to other databases.
-- If we face any isssue any cloud problems, we can contact the developers through the website, as they know best.
+- If we face any issue any cloud problems, we can contact the developers through the website, as they know best.
 - It runs on multiple operating systems.
 - It’s the first rank on all other servers in the database.
 
