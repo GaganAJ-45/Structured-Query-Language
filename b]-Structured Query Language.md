@@ -42,20 +42,6 @@ Examples of RDBMS software that use SQL: **MySQL, Oracle, PostgreSQL, SQL Server
 ---
 
 > **Relational Model**: Logically represents data as tables. RDBMS software follows this model.
-
----
-
-## 4. Codd's 12 Rules (E.F. Codd)
-
-> Rules that define what a **true relational database** must follow.
-
-1. **What is the Codd Rule?** — Rules enforced in an RDBMS so that data entered in a table is *validated* before it goes into a DB table.
-2. **According to E.F. Codd rules**, we can store single, atomic values in a cell — i.e., a cell must hold **a single value**.
-3. **Informs**: stores the data in table form. It also considers "meta data" (data about data — column names, data types, etc.) as data — meta data must be stored/validated in the same way.
-4. **Details of data & meta data**: meta data must be stored in the DB in two ways:
-   - **Data Dictionary**
-   - **System Catalog**
-
 ---
 
 ## 5. SQL Sub-Languages
