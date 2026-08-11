@@ -76,7 +76,7 @@ UPDATE student SET country = 'India' WHERE country IS NULL;
 
 > ⚠️ **Always use a `WHERE` clause with `UPDATE`.** Without one, **every row** in the table gets updated.
 ```sql
--- ❌ Dangerous — updates ALL rows in the table
+-- ❌ Dangerous — updates ALL rows in the table for this we need to turn off the safe update to 0
 UPDATE student SET country = 'India';
 ```
 
