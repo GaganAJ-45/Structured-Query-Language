@@ -6,4 +6,4 @@ this repository includes the details about Database and RDBS and MySql And queri
 - [[a] Data and Database](a%5D-Data%20and%20database.md)
 - [[b] Structured Query Language](b%5D-Structured%20Query%20Language.md)
 - [[c] Data Types and Constraints](c%5D-Data%20types%20and%20cons.md)
-- [[d]DDL](d%5-DDL.md)
+- [[d]DDL](d%5D-DDL.md)
