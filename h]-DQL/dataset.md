@@ -23,7 +23,7 @@ A single flat table only teaches you `SELECT`/`WHERE`. Two related tables — a 
 ### Schema
 ```sql
 CREATE TABLE department (
-    dept_id           SERIAL PRIMARY KEY,
+    dept_id           INT PRIMARY KEY AUTO_INCREMENT,
     dept_name         VARCHAR(50) NOT NULL,
     location          VARCHAR(50),
     manager_name      VARCHAR(50),
@@ -33,9 +33,11 @@ CREATE TABLE department (
 );
 ```
 
+> ⚠️ **Why `INT AUTO_INCREMENT` instead of `SERIAL`?** In MySQL, `SERIAL` is just shorthand for `BIGINT UNSIGNED NOT NULL AUTO_INCREMENT UNIQUE`. If the parent table's key is `SERIAL` (→ `BIGINT UNSIGNED`) but the child table's foreign key column is plain `INT`, MySQL throws **Error 3780** ("referencing column and referenced column are incompatible") because the two types don't match byte-for-byte. Using plain `INT PRIMARY KEY AUTO_INCREMENT` on both sides keeps the types identical and the foreign key happy.
+
 | Column | Type | Meaning |
 |---|---|---|
-| `dept_id` | `SERIAL PRIMARY KEY` | Unique ID for the department |
+| `dept_id` | `INT PRIMARY KEY AUTO_INCREMENT` | Unique ID for the department |
 | `dept_name` | `VARCHAR(50)` | Name of the department (e.g. Engineering) |
 | `location` | `VARCHAR(50)` | City the department is based in |
 | `manager_name` | `VARCHAR(50)` | Name of the department head |
@@ -66,7 +68,7 @@ CREATE TABLE department (
 ### Schema
 ```sql
 CREATE TABLE employee (
-    emp_id       SERIAL PRIMARY KEY,
+    emp_id       INT PRIMARY KEY AUTO_INCREMENT,
     first_name   VARCHAR(50) NOT NULL,
     last_name    VARCHAR(50),
     age          INT CHECK (age > 0),
@@ -80,9 +82,11 @@ CREATE TABLE employee (
 );
 ```
 
+> `dept_id` here is plain `INT`, matching `department.dept_id` (also `INT`) exactly — that's what makes the `FOREIGN KEY` line work without error.
+
 | Column | Type | Meaning |
 |---|---|---|
-| `emp_id` | `SERIAL PRIMARY KEY` | Unique ID for the employee |
+| `emp_id` | `INT PRIMARY KEY AUTO_INCREMENT` | Unique ID for the employee |
 | `first_name` | `VARCHAR(50)` | First name |
 | `last_name` | `VARCHAR(50)` | Last name |
 | `age` | `INT` | Age in years |
@@ -120,8 +124,11 @@ CREATE DATABASE IF NOT EXISTS company;
 USE company;
 
 -- 2. Create the tables
+-- Note: using INT AUTO_INCREMENT (not SERIAL) on both tables so the
+-- primary key and foreign key column types match exactly — see the
+-- warning in Section 2 for why this matters.
 CREATE TABLE department (
-    dept_id           SERIAL PRIMARY KEY,
+    dept_id           INT PRIMARY KEY AUTO_INCREMENT,
     dept_name         VARCHAR(50) NOT NULL,
     location          VARCHAR(50),
     manager_name      VARCHAR(50),
@@ -131,7 +138,7 @@ CREATE TABLE department (
 );
 
 CREATE TABLE employee (
-    emp_id       SERIAL PRIMARY KEY,
+    emp_id       INT PRIMARY KEY AUTO_INCREMENT,
     first_name   VARCHAR(50) NOT NULL,
     last_name    VARCHAR(50),
     age          INT CHECK (age > 0),
