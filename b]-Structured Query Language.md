@@ -78,6 +78,9 @@ ALTER TABLE table_name MODIFY column_name new_data_type;
 -- Alter table: modify column name
 ALTER TABLE table_name RENAME COLUMN old_name TO new_name;
 ```
+---
+> @ For More Info - [[d]DDL](d%5D-DDL.md)
+---
 
 ### 5.2 DML — Data Manipulation Language
 Used to manipulate (add/change/remove) the data **inside** a table.
@@ -98,7 +101,9 @@ UPDATE student SET age = 23 WHERE id = 1;
 -- DELETE
 DELETE FROM student WHERE id = 1;
 ```
-
+---
+> @ For More Info - [[e]DML](e%5D-DML.md)
+---
 ### 5.3 DQL — Data Query Language
 Used purely to **retrieve/read** data from a table — doesn't change any data. Some textbooks group `SELECT` under DML, but it's cleaner to treat it as its own category since it *only reads*, never *writes*.
 
@@ -116,6 +121,9 @@ SELECT name, age FROM student WHERE age > 18;
 -- SELECT with sorting
 SELECT * FROM student ORDER BY age DESC;
 ```
+---
+> @ For More Info - [[f]DQL](e%5D-DQL.md)
+---
 
 ### 5.4 DCL — Data Control Language
 Controls permissions and access to the database.
@@ -124,6 +132,9 @@ Controls permissions and access to the database.
 |---|---|
 | `GRANT` | Give access/permission to a user |
 | `REVOKE` | Take away access/permission |
+---
+> @ For More Info - - [[g]DCL](g%5D-DCL.md)
+---
 
 ### 5.5 TCL — Transaction Control Language
 Used to manage transactions in a database.
@@ -133,7 +144,8 @@ Used to manage transactions in a database.
 | `COMMIT` | Save all changes made in the transaction |
 | `ROLLBACK` | Undo changes made in the transaction |
 | `SAVEPOINT` | Set a point within a transaction to roll back to |
-
+---
+> @ For More Info - - [[f]TCL](f%5D-TCL.md)
 ---
 
 ## 6. Oracle Database — Quick Overview
