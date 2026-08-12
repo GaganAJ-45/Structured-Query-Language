@@ -9,4 +9,4 @@ this repository includes the details about Database and RDBS and MySql And queri
 - [[d]DDL](d%5D-DDL.md)
 - [[e]DML](e%5D-DML.md)
 - [[f]TCL](f%5D-TCL.md)
-- [[g]DCL](g%5D-DcL.md)
+- [[g]DCL](g%5D-DCL.md)
