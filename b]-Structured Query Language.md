@@ -1,7 +1,7 @@
 # SQL & DBMS Fundamentals
 
 > Notes compiled from handwritten study material — Day 1
-> Topics: SQL basics, DBMS vs RDBMS, Codd's Rules, DDL/DML/DQL/DCL/TCL, Oracle, Tables, Data Types, Constraints, Keys
+> Topics: SQL basics, DDL/DML/DQL/DCL/TCL, Oracle, Tables, Data Types, Constraints, Keys
 
 ---
 
