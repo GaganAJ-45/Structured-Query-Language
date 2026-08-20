@@ -21,8 +21,6 @@ It is used to:
 Examples of RDBMS software that use SQL: **MySQL, Oracle, PostgreSQL, SQL Server**.
 
 ---
-> **Relational Model**: Logically represents data as tables. RDBMS software follows this model.
----
 > Data types and constraints have been moved to a dedicated file — see [Data Types and Constraints](c%5D-Data%20types%20and%20cons.md).
 ---
 
