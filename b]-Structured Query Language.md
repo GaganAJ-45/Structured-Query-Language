@@ -21,23 +21,6 @@ It is used to:
 Examples of RDBMS software that use SQL: **MySQL, Oracle, PostgreSQL, SQL Server**.
 
 ---
-## 2. Core Concepts: Data, Object, Properties
-
-| Term | Meaning |
-|---|---|
-| **Data** | Raw facts — "nothing but the properties of an object/entity." |
-| **Object / Entity** | A real-world thing we store data about (e.g., a person). |
-| **Properties / Attributes** | The characteristics of that object. |
-
-**Example — Object: `AJ`**
-
-| Property | Value |
-|---|---|
-| name | AJ |
-| age | 22 |
-| DOB | 22-05-2004 |
-
-> Properties can be **static** (fixed, e.g., DOB) or **dynamic** (changeable, e.g., age).
 
 ---
 
