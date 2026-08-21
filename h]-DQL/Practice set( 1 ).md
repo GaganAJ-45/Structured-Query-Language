@@ -1,1 +1,220 @@
+# Practice Set 1 — SELECT, WHERE, ORDER BY, LIMIT, Aggregates, GROUP BY & HAVING
 
+> Part of the **DQL** series. Covers everything from [1-basic-select-and-filtering.md](1-basic-select-and-filtering.md) through [4-group-by-and-having.md](4-group-by-and-having.md).
+> Runs against the `department` and `employee` tables — see [00-dataset.md](00-dataset.md).
+
+---
+
+## How to Use This File
+
+1. Read the question.
+2. **Actually try writing the query yourself first** — on paper, in a notes app, wherever. Resist the urge to scroll straight to the solution; that's the equivalent of watching someone else do your gym reps.
+3. Then check the **Solutions** section at the bottom to compare.
+
+Difficulty is marked with a coffee scale ☕ — because that's roughly how much thinking each one costs:
+
+- ☕ Easy — one sip, barely warm
+- ☕☕ Medium — you're now paying attention
+- ☕☕☕ Hard — interview-round, fully-caffeinated energy
+
+No peeking ahead. Let's go.
+
+---
+
+## Section A — Easy ☕ (Questions)
+
+**A1.** Get the `first_name`, `last_name`, and `salary` of every employee.
+
+**A2.** List all the **unique** `location` values from the `department` table.
+
+**A3.** Find all employees whose `age` is greater than 30.
+
+**A4.** Find all employees whose `first_name` starts with the letter `'A'`.
+
+**A5.** Find all employees who currently have **no salary on record**.
+
+---
+
+## Section B — Medium ☕☕ (Questions)
+
+**B1.** Show the 5 **highest-paid** employees, listing their name and salary, sorted from highest to lowest.
+
+**B2.** Find all employees who belong to department `1`, **or** department `2`, and are older than `25`.
+
+**B3.** You're building a "Page 2" of an employee directory, showing 10 employees per page, sorted by `emp_id`. Write the query for page 2.
+
+**B4.** Find the total number of employees, and separately, the number of employees who actually have a salary on file. (Two different counts, one query.)
+
+**B5.** For each department, show how many employees work there — but only include departments with **more than 3** employees.
+
+---
+
+## Section C — Hard ☕☕☕ (Interview-style Questions)
+
+**C1.** Find the average salary **per department**, but only counting employees who actually have a salary recorded, and only show departments where that average is above ₹60,000 — sorted with the richest department first.
+
+**C2.** Without using `MAX()`, find the employee with the **highest salary** using only `ORDER BY` and `LIMIT`. *(Common interview trick question — tests whether you understand that `ORDER BY` + `LIMIT 1` can replace `MAX` when you also need the full row, not just the number.)*
+
+**C3.** Find the **second highest** salary in the company, without using a subquery — using only `ORDER BY`, `LIMIT`, and `OFFSET`.
+
+**C4.** A recruiter asks: *"Which departments have at least 2 employees earning above ₹70,000?"* Write a single query to answer this. *(Hint: this needs `WHERE` AND `HAVING` working together — one filters people, the other filters the resulting groups.)*
+
+**C5.** Explain, in one sentence, why the following query throws an error — and then fix it:
+```sql
+SELECT dept_id, first_name, AVG(salary)
+FROM employee
+GROUP BY dept_id;
+```
+
+---
+
+☕ *Coffee refill checkpoint. Solutions start below — no more skipping ahead.* ☕
+
+---
+---
+
+## Solutions — Section A (Easy)
+
+**A1.**
+```sql
+SELECT first_name, last_name, salary FROM employee;
+```
+> Straight `SELECT` with specific columns — no filtering needed.
+
+**A2.**
+```sql
+SELECT DISTINCT location FROM department;
+```
+> `DISTINCT` strips out repeated city names, since multiple departments can share a location.
+
+**A3.**
+```sql
+SELECT * FROM employee WHERE age > 30;
+```
+
+**A4.**
+```sql
+SELECT first_name FROM employee WHERE first_name LIKE 'A%';
+```
+> `%` matches any number of trailing characters after the `'A'`.
+
+**A5.**
+```sql
+SELECT first_name, last_name FROM employee WHERE salary IS NULL;
+```
+> Not `= NULL` — that classic trap never works. Always `IS NULL`.
+
+---
+
+## Solutions — Section B (Medium)
+
+**B1.**
+```sql
+SELECT first_name, last_name, salary
+FROM employee
+ORDER BY salary DESC
+LIMIT 5;
+```
+> `ORDER BY` decides the ranking, `LIMIT 5` cuts it down to the top 5. Order of these two keywords in the query matters — `ORDER BY` always comes before `LIMIT`.
+
+**B2.**
+```sql
+SELECT * FROM employee
+WHERE (dept_id = 1 OR dept_id = 2) AND age > 25;
+```
+> Parentheses matter here — without them, `AND` binds tighter than `OR` in some readings, and you could accidentally get a different (wrong) result. When mixing `AND`/`OR`, always bracket the `OR` part explicitly. (You could also write `dept_id IN (1, 2)` instead of the `OR` — cleaner, same result.)
+
+**B3.**
+```sql
+SELECT * FROM employee
+ORDER BY emp_id
+LIMIT 10 OFFSET 10;
+```
+> Page 2 means skip the first 10 (page 1's rows), then take the next 10. Formula: `OFFSET = (page - 1) × page_size` → `(2-1) × 10 = 10`.
+
+**B4.**
+```sql
+SELECT
+    COUNT(*)      AS total_employees,
+    COUNT(salary) AS employees_with_salary
+FROM employee;
+```
+> `COUNT(*)` counts every row. `COUNT(salary)` only counts rows where `salary` isn't `NULL`. The gap between the two numbers tells you exactly how many are missing.
+
+**B5.**
+```sql
+SELECT dept_id, COUNT(*) AS employee_count
+FROM employee
+GROUP BY dept_id
+HAVING COUNT(*) > 3;
+```
+> Group first, then filter the *groups* with `HAVING` — never `WHERE COUNT(*)`, that doesn't exist yet at the `WHERE` stage.
+
+---
+
+## Solutions — Section C (Hard / Interview-style)
+
+**C1.**
+```sql
+SELECT dept_id, AVG(salary) AS avg_salary
+FROM employee
+WHERE salary IS NOT NULL
+GROUP BY dept_id
+HAVING AVG(salary) > 60000
+ORDER BY avg_salary DESC;
+```
+> Execution order in action: `WHERE` drops the no-salary rows first → `GROUP BY` buckets what's left by department → `HAVING` keeps only the well-paid buckets → `ORDER BY` ranks the survivors.
+
+**C2.**
+```sql
+SELECT * FROM employee
+ORDER BY salary DESC
+LIMIT 1;
+```
+> `MAX(salary)` alone only gives you the *number* — it can't hand you the rest of that employee's row (name, department, etc.) in the same simple query. Sorting descending and grabbing row 1 gives you the whole record, which is usually what you actually want when someone asks "who's the highest paid?"
+
+**C3.**
+```sql
+SELECT salary FROM employee
+WHERE salary IS NOT NULL
+ORDER BY salary DESC
+LIMIT 1 OFFSET 1;
+```
+> Sort highest to lowest, skip the very top one (`OFFSET 1`), then take the next one (`LIMIT 1`) — that's the second-highest. This exact pattern extends to "Nth highest" by changing the offset to `N - 1`.
+
+**C4.**
+```sql
+SELECT dept_id, COUNT(*) AS high_earners
+FROM employee
+WHERE salary > 70000
+GROUP BY dept_id
+HAVING COUNT(*) >= 2;
+```
+> `WHERE salary > 70000` throws out everyone earning less, **before** grouping even happens. Then `GROUP BY` buckets the survivors by department, and `HAVING COUNT(*) >= 2` keeps only departments where at least 2 such high-earners landed in the same bucket. This is the exact WHERE-then-HAVING combo interviewers love to test.
+
+**C5.**
+> **One-sentence reason:** `first_name` belongs to a single employee, but once `GROUP BY dept_id` runs, each department is a bucket of *many* employees — so SQL has no way to know whose `first_name` you want, and refuses to guess.
+
+**Fix — option 1: remove `first_name`, since a per-department query shouldn't show one arbitrary name anyway:**
+```sql
+SELECT dept_id, AVG(salary)
+FROM employee
+GROUP BY dept_id;
+```
+
+**Fix — option 2: if you actually want the highest earner's name per department, that's a different, more advanced question (needs a subquery or window function) — not something plain `GROUP BY` can answer, which is worth saying out loud in an interview rather than guessing.**
+
+---
+
+## Self-Check Scorecard
+
+| Section | Questions | You got right (fill in) |
+|---|---|---|
+| A — Easy | 5 | ___ / 5 |
+| B — Medium | 5 | ___ / 5 |
+| C — Hard | 5 | ___ / 5 |
+
+> If Section C felt shaky, that's completely normal — that's interview-round difficulty on purpose. Re-read [4-group-by-and-having.md](4-group-by-and-having.md), then come back and retry C1 and C4 from scratch without looking. That's usually the exact moment `GROUP BY`/`HAVING` finally "clicks."
+
+---
+📌 **Related notes:** [← 4. GROUP BY & HAVING](4-group-by-and-having.md) | [Dataset](00-dataset.md) | [5. JOINs →](5-joins.md) *(coming next)* | [Back to README](../README.md)
