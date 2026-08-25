@@ -137,4 +137,4 @@ COMMIT;   -- order insert is now permanently saved
 | Golden rule | TCL only controls **DML** changes — DDL is always auto-committed |
 
 ---
-📌 **Related notes:** [← Data Manipulation Language](e%5D-Data%20Manipulation%20Language.md) | [Data Definition Language](d%5D-Data%20Definition%20Language.md) | [Back to README](README.md)
+📌 **Related notes:** [← DML](e%5D-DML.md) | [← DDL](d%5D-DDL.md) | [Back to README](README.md)
