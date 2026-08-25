@@ -171,4 +171,4 @@ FLUSH PRIVILEGES;
 | Golden rule | Follow the **principle of least privilege** — only grant what a user actually needs |
 
 ---
-📌 **Related notes:** [← Transaction Control Language](f%5D-Transaction%20Control%20Language.md) | [Data Manipulation Language](e%5D-Data%20Manipulation%20Language.md) | [Back to README](README.md)
+📌 **Related notes:** [← TCL](f%5D-TCL.md) | [← DML](e%5D-DML.md) | [Back to README](README.md)
