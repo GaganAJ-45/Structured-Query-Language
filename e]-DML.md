@@ -155,4 +155,4 @@ DELETE FROM student ORDER BY age DESC LIMIT 5;
 | Golden rule | Always pair `UPDATE`/`DELETE` with a `WHERE` clause unless you *really* mean to affect every row |
 
 ---
-📌 **Related notes:** [← Data Definition Language](d%5D-Data%20Definition%20Language.md) | [Structured Query Language](b%5D-Structured%20Query%20Language.md) | [Back to README](README.md)
+📌 **Related notes:** [← DDL](d%5D-DDL.md) | [Structured Query Language](b%5D-Structured%20Query%20Language.md) | [Back to README](README.md)
