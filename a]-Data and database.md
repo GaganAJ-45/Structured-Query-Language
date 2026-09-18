@@ -25,7 +25,7 @@
 - IT is the software which is going to manage and maintain the database activity
 - it provides the security and authentication
 - in this software the data is stored in the file formate
-- use the Qery language to communicate in DB
+- use the Query language to communicate in DB
 
 ## **Relational Database management System.**
 - It is software that helps maintain database activity.
